@@ -63,7 +63,7 @@ const Community = () => {
 
           <div className="relative w-full md:w-1/2">
             <motion.img
-              src="src/assets/comunidadehome.jpg"
+              src="src/assets/images/Comunidade/comunidadehome.jpg"
               alt="Comunidade Home"
               className="w-full h-auto rounded-lg object-cover"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -100,7 +100,7 @@ const Community = () => {
                   melhor experiência para usuários e empresas.
                 </p>
                 <img
-                  src="src/assets/Projeto_I-Center.jpeg"
+                  src="src/assets/images/Comunidade/Projeto_I-Center.jpeg"
                   alt="I-Center"
                   className="w-full h-40 object-cover rounded-lg"
                 />
@@ -125,7 +125,7 @@ const Community = () => {
                   alcançando os melhores resultados.
                 </p>
                 <img
-                  src="src/assets/Gerenciamento-Projetos.png"
+                  src="src/assets/images/Comunidade/Gerenciamento-Projetos.png"
                   alt="Gerenciamento de projetos"
                   className="w-full h-40 object-cover rounded-lg"
                 />
@@ -150,7 +150,7 @@ const Community = () => {
                   evolução.
                 </p>
                 <img
-                  src="src/assets/Comunidade.JPG"
+                  src="src/assets/images/Comunidade/Comunidade.jpg"
                   alt="Comunidade"
                   className="w-full h-40 object-cover rounded-lg"
                 />
@@ -186,7 +186,7 @@ const Community = () => {
           </div>
           <div>
             <img
-              src="src/assets/image-comunidade.jpg"
+              src="src/assets/images/Comunidade/image-comunidade.jpg"
               alt="Missão"
               className="w-full rounded-lg shadow-lg"
             />

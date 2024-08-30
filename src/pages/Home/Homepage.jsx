@@ -1,5 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
+
+const LoginPage = () => {
+  return (
+    <div>
+      <h1>{texts.login.title}</h1>
+      <form>
+        <label>{texts.login.username}</label>
+        <input type="text" />
+        <label>{texts.login.password}</label>
+        <input type="password" />
+        <button>{texts.login.submit}</button>
+      </form>
+    </div>
+  );
+};
+
 const Home = () => {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -317,7 +333,7 @@ const Home = () => {
               key={alt}
               src={src}
               alt={`Parceiro ${alt}`}
-              className="h-14 transform transition duration-2 hover:scale-110"
+              className="h-12 transform transition duration-2 hover:scale-110"
               whileHover={{ rotate: [0, 5, -5, 0], scale: 1.1 }}
               transition={{ type: "spring", stiffness: 200 }}
             />

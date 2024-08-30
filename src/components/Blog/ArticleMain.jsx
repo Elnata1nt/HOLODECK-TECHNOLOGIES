@@ -1,4 +1,4 @@
-import { articlesMainList } from "./CategoriesAndArticles.jsx";
+import { articlesMainList } from "./CategoriesAndArticles";
 import PropTypes from 'prop-types';
 
 

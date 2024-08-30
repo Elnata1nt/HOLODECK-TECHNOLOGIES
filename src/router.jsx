@@ -7,6 +7,9 @@ import CommunityJoin from './pages/Community/CommunityJoin';
 import Projects from './pages/Projects/Projects';
 import Events from './pages/EventsHolo/Events';
 import Store from './pages/Store/Shopping';
+
+import Login from './pages/Auth/LoginPage'; 
+import Register from './pages/Auth/RegisterPage'; 
 import PrivacyPolicy from './utils/validators/PrivacyPolicy';
 
 function AppRouter() {
@@ -18,6 +21,8 @@ function AppRouter() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/events" element={<Events />} />
         <Route path="/store" element={<Store />} />
+        <Route path="/login" element={<Login />} /> 
+        <Route path="/register" element={<Register />} /> 
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         {/* Adicione outras rotas conforme a estrutura das páginas */}
       </Routes>
@@ -60,8 +65,8 @@ export default AppRouter;
 //         <Route path="/store" element={<Store />} />
 //         <Route path="/blog" element={<Blog />} />
 //         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-//         <Route path="/login" element={<Login />} /> {/* Adicionando a rota de Login */}
-//         <Route path="/register" element={<Register />} /> {/* Adicionando a rota de Register */}
+        // <Route path="/login" element={<Login />} /> {/* Adicionando a rota de Login */}
+        // <Route path="/register" element={<Register />} /> {/* Adicionando a rota de Register */}
 //       </Routes>
 //     </Router>
 //   );

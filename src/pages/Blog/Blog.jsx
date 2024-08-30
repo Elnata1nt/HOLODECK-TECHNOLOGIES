@@ -1,9 +1,9 @@
   import { useEffect, useState } from "react";
-  import ArticleMain from "../components/Layout/Blog/ArticleMain.jsx";
-  import ArticlesSection from "../components/Layout/Blog/ArticlesSection.jsx";
-  import FilterSection from "../components/Layout/Blog/FilterSection.jsx";
+  import ArticleMain from "../../components/Blog/ArticleMain.jsx";
+  import ArticlesSection from "../../components/blog/ArticlesSection.jsx";
+  import FilterSection from "../../components/blog/FilterSection.jsx";
   // import axios from "axios";
-import { newsArticles } from './../components/Layout/Blog/mockArticles';
+import { newsArticles } from '../../components/blog/mockArticles';
 
 
   // esse cache salva muito, pois reduz o numero de req do backend (temporario)
