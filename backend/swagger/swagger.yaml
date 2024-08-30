@@ -1,0 +1,253 @@
+openapi: 3.0.0
+info:
+  title: User API
+  description: API para gerenciamento de usuários
+  version: 1.0.0
+
+# Define a autenticação Bearer globalmente
+security:
+  - bearerAuth: []
+
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+        email:
+          type: string
+        cpf:
+          type: string
+        username:
+          type: string
+        profilePicture:
+          type: string
+        bio:
+          type: string
+        website:
+          type: string
+        github:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+paths:
+  /users/list-users:
+    get:
+      summary: Lista todos os usuários
+      responses:
+        '200':
+          description: Usuários listados com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '500':
+          description: Erro interno do servidor
+
+  /users/list-users/{id}:
+    get:
+      summary: Lista um usuário específico pelo ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Usuário encontrado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: ID inválido fornecido
+        '403':
+          description: Permissão negada
+        '404':
+          description: Usuário não encontrado
+        '500':
+          description: Erro interno do servidor
+
+  /users/delete-user/{id}:
+    delete:
+      summary: Deleta um usuário pelo ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      security:
+        - bearerAuth: [] # Aplicando o esquema de segurança aqui
+      responses:
+        '200':
+          description: Usuário deletado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Usuário e artigos deletados com sucesso!
+        '400':
+          description: ID inválido fornecido
+        '403':
+          description: Permissão negada
+        '404':
+          description: Usuário não encontrado
+        '500':
+          description: Erro interno do servidor
+
+  /users/update-user/{id}:
+    put:
+      summary: Atualiza um usuário existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1    
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                cpf:
+                  type: string
+                username:
+                  type: string
+                bio:
+                  type: string
+                website:
+                  type: string
+                github:
+                  type: string
+                linkedin:
+                  type: string
+                twitter:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Usuário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Usuário atualizado com sucesso!
+                  updatedUser:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: ID inválido fornecido
+        '403':
+          description: Permissão negada
+        '404':
+          description: Usuário não encontrado
+        '409':
+          description: CPF já está em uso
+        '500':
+          description: Erro interno do servidor
+
+  /users/create-user:
+    post:
+      summary: Cria um novo usuário
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                cpf:
+                  type: string
+                username:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  user:
+                    $ref: '#/components/schemas/User'
+                  token:
+                    type: string
+        '409':
+          description: Usuário com esse CPF já existe
+        '500':
+          description: Erro interno do servidor

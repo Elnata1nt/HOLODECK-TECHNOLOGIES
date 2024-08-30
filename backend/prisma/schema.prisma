@@ -1,0 +1,38 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+        
+model User {
+  id             Int      @id @default(autoincrement())
+  name           String
+  username       String   @unique
+  email          String   @unique
+  cpf            String   @unique  // CPF único (para sistemas brasileiros)
+  password       String
+  bio            String?  // Biografia do usuário, opcional
+  profilePicture String?  // URL da imagem de perfil, opcional
+  website        String?  // URL do site pessoal ou portfólio, opcional
+  github         String?  // URL do perfil GitHub, opcional
+  linkedin       String?  // URL do perfil LinkedIn, opcional
+  twitter        String?  // URL do perfil Twitter, opcional
+  createdAt      DateTime @default(now()) // Data de criação do perfil
+  updatedAt      DateTime @updatedAt      // Data de última atualização do perfil
+  articles       Article[] // Relacionamento com artigos escritos pelo usuário
+}
+
+
+model Article {
+  id      Int    @id @default(autoincrement())
+  title   String
+  content String
+  theme   String
+  userId  Int
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
