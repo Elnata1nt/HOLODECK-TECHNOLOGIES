@@ -100,7 +100,7 @@ const Community = () => {
                   melhor experiência para usuários e empresas.
                 </p>
                 <img
-                  src="src/assets/images/Comunidade/Projeto_I-Center.jpeg"
+                  src="src/assets/videos/_.gif"
                   alt="I-Center"
                   className="w-full h-40 object-cover rounded-lg"
                 />
@@ -120,7 +120,7 @@ const Community = () => {
                 </h3>
                 <p className="text-gray-200 mb-4">
                   Nossa abordagem ágil e eficiente em gerenciamento de projetos
-                  garante a entrega pontual e dentro do orçamento. Estamos
+                  garante a entrega pontual. Estamos
                   comprometidos com a transparência e a comunicação constante
                   alcançando os melhores resultados.
                 </p>

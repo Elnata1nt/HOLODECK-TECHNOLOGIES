@@ -111,7 +111,7 @@ const Home = () => {
             </div>
             <div className="relative w-full lg:w-2/3 h-auto rounded-lg col-span-1 sm:col-span-2">
               <motion.img
-                src="src/assets/images/Home/communithome.jpg"
+                src="src/assets/images/Home/comunidadehome.jpg"
                 alt="Student 3"
                 className="w-full h-auto rounded-lg object-cover"
                 initial={{ opacity: 0, scale: 0.9 }}
