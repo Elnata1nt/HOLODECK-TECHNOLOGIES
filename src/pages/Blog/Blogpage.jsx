@@ -1,7 +1,7 @@
   import { useEffect, useState } from "react";
   import ArticleMain from "../../components/Blog/ArticleMain.jsx";
   import ArticlesSection from "../../components/blog/ArticlesSection.jsx";
-  import FilterSection from "../../components/blog/FilterSection.jsx";
+  import FilterSection from "../../components/Blog/FilterSection";
   // import axios from "axios";
 import { newsArticles } from '../../components/blog/mockArticles';
 

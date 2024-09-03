@@ -7,7 +7,7 @@ import CommunityJoin from './pages/Community/CommunityJoin';
 import Projects from './pages/Projects/Projects';
 import Events from './pages/EventsHolo/Events';
 import Store from './pages/Store/Shopping';
-
+import Blog from './pages/Blog/Blogpage'
 import Login from './pages/Auth/LoginPage'; 
 import Register from './pages/Auth/RegisterPage'; 
 import PrivacyPolicy from './utils/validators/PrivacyPolicy';
@@ -24,6 +24,7 @@ function AppRouter() {
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />} /> 
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="/blog" element={<Blog />} />
         {/* Adicione outras rotas conforme a estrutura das páginas */}
       </Routes>
     </Router>

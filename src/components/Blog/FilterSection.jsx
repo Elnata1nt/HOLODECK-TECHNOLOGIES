@@ -1,10 +1,10 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import {btnClose, btnMore, listCategory } from "../../Layout/Blog/CategoriesAndArticles.jsx";
+import {btnClose, btnMore, listCategory } from "../../components/Blog/CategoriesAndArticles";
 
 function FilterSection({ setCategory }) {
-  const [showAllCategories, setShowAllCategories] = useState(false);
+  const [showAllCategories, setShowAllCategories] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState("News");
   const [searchTerm, setSearchTerm] = useState("");
 

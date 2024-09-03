@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import imgDefault from "../../../assets/logo-sem-fundo.png";
-import imgAuthor from "../../../assets/iconsAuthor/natanIcon.png";
+import imgDefault from "@/assets/icons/logo/logo-sem-fundo.png";
+import imgAuthor from "@/assets/images/PARCEIROS/logo-parceiro.png";
 
 const defaultImage = imgDefault;
 
 const ArticleCardSection = ({ i, el }) => {
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { year: "numeric", month: "long", day: "numeric" };
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR', options);
+    return date.toLocaleDateString("pt-BR", options);
   };
 
   const truncateText = (text, maxLength) => {
@@ -51,13 +51,13 @@ const ArticleCardSection = ({ i, el }) => {
           </div>
         </div>
         <div className="h-max w-full flex flex-col justify-start items-start pt-2">
-          <h2
-            
-            className="text-gray-800 font-bold font-mono sm:text-xl md:text-xl text-start "
-          >
+          <h2 className="text-gray-800 font-bold font-mono sm:text-xl md:text-xl text-start ">
             {el.title}
           </h2>
-          <p title={el.description} className="text-gray-700 font-light text-base overflow-hidden">
+          <p
+            title={el.description}
+            className="text-gray-700 font-light text-base overflow-hidden"
+          >
             {truncatedDescription}
           </p>
           <div className="mt-4 text-gray-700 text-sm flex items-center">
@@ -70,7 +70,10 @@ const ArticleCardSection = ({ i, el }) => {
               <span className="text-gray-700 font-bold font-mono first-letter:uppercase">
                 {el.author}
               </span>
-              <time className="text-gray-700 font-light text-sm" dateTime={el.date_create}>
+              <time
+                className="text-gray-700 font-light text-sm"
+                dateTime={el.date_create}
+              >
                 {formattedDate}
               </time>
             </div>
@@ -100,9 +103,7 @@ function ArticlesSection({ articles, loading, error }) {
       )}
       {!loading &&
         !error &&
-        articles.map((el, i) => (
-          <ArticleCardSection key={i} el={el} i={i} />
-        ))}
+        articles.map((el, i) => <ArticleCardSection key={i} el={el} i={i} />)}
     </div>
   );
 }
