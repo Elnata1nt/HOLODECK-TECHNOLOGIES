@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useAuthContext } from '../../contexts/AuthContext'; // Supondo que você use o contexto de autenticação
+import React, { useState } from "react";
+import { useAuthContext } from "../../contexts/AuthContext"; // Supondo que você use o contexto de autenticação
 
 const Login = () => {
   const { login } = useAuthContext();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
@@ -13,7 +13,7 @@ const Login = () => {
       await login(username, password);
       // Redirecionar ou mostrar uma mensagem de sucesso
     } catch (err) {
-      setError('Falha ao fazer login. Verifique suas credenciais.');
+      setError("Falha ao fazer login. Verifique suas credenciais.");
     }
   };
 
@@ -25,9 +25,13 @@ const Login = () => {
       <div className="flex flex-col md:flex-row items-center justify-center bg-black bg-opacity-70 p-10 rounded-lg shadow-lg max-w-5xl w-full">
         {/* Left Section: Welcome Message */}
         <div className="hidden md:flex flex-col items-start justify-center w-full md:w-1/2 p-8 text-white space-y-6">
-          <h1 className="text-4xl font-bold">Onde os desenvolvedores sofrem juntos</h1>
+          <h1 className="text-4xl font-bold">
+            Onde os desenvolvedores sofrem juntos
+          </h1>
           <p className="text-gray-300">
-            Sabemos o quão difícil é ser um desenvolvedor. Não precisa ser. Feed de notícias personalizado, comunidade dev e pesquisa, muito melhor do que o que está por aí. Talvez ;)
+            Sabemos o quão difícil é ser um desenvolvedor. Não precisa ser. Feed
+            de notícias personalizado, comunidade dev e pesquisa, muito melhor
+            do que o que está por aí. Talvez ;)
           </p>
         </div>
         {/* Right Section: Login Form */}
@@ -36,7 +40,10 @@ const Login = () => {
           {error && <p className="text-red-500 text-center">{error}</p>}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-300">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium text-gray-300"
+              >
                 E-mail
               </label>
               <input
@@ -50,7 +57,10 @@ const Login = () => {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-300">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-300"
+              >
                 Senha
               </label>
               <input
@@ -78,14 +88,16 @@ const Login = () => {
               <button className="flex items-center justify-center w-full px-4 py-2 font-semibold text-black bg-white rounded hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
                 <span className="mr-2">🔗</span> Google
               </button>
-              <button className="flex items-center justify-center w-full px-4 py-2 font-semibold text-white bg-gray-800 rounded hover:bg-gray-900
-  focus:outline-none focus:ring-2 focus:ring-gray-700">
+              <button className="flex items-center justify-center w-full px-4 py-2 font-semibold text-white bg-gray-800 rounded hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-700">
                 <span className="mr-2">🐱</span> GitHub
               </button>
             </div>
             <div className="text-center mt-4">
               <p className="text-gray-400">
-                Não tem uma conta? <a href="/register" className="text-purple-400 hover:underline">Registre-se</a>
+                Não tem uma conta?{" "}
+                <a href="/register" className="text-purple-400 hover:underline">
+                  Registre-se
+                </a>
               </p>
             </div>
           </form>
@@ -93,7 +105,6 @@ const Login = () => {
       </div>
     </div>
   );
-  
 };
 
 export default Login;
