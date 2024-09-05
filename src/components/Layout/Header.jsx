@@ -22,11 +22,11 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-slate-100 relative">
-      <div className="container mx-auto flex text-gray-900 justify-between items-center py-4 px-6">
+    <header className="bg-white relative">
+      <div className="container mx-auto flex text-black justify-between items-center py-4 px-6">
         {/* Logo com Fonte Personalizada */}
         <div className="text-3xl font-bold">
-          Holodeck<span className="text-gray-100"></span>
+          Holodeck<span className="text-white"></span>
         </div>
 
         {/* Botão de Menu para Modo Mobile */}
@@ -39,7 +39,7 @@ const Header = () => {
           <button
             onClick={toggleMenu}
             aria-label="Toggle Menu"
-            className="text-gray-900"
+            className="text-black"
           >
             {isMenuOpen ? (
               <AiOutlineClose size={30} />
@@ -55,49 +55,49 @@ const Header = () => {
         >
           <a
             href="/"
-            className="hover:text-gray- font-semibold transition-colors duration-200"
+            className="hover:text-secondary font-semibold transition-colors duration-200"
           >
             Home
           </a>
           {/* <a
               href="/contact"
-              className="hover:text-gray-200 transition-colors duration-200"
+              className="hover:text-secondary200 transition-colors duration-200"
             >
               Contato
             </a> */}
           <a
             href="/communityjoin"
-            className="hover:text-gray- font-semibold transition-colors duration-200"
+            className="hover:text-secondary font-semibold transition-colors duration-200"
           >
             Comunidade
           </a>
           {/* <a
               href="/collaborator"
-              className="hover:text-gray- font-semibold transition-colors duration-200"
+              className="hover:text-secondary font-semibold transition-colors duration-200"
             >
               Colaborador
             </a> */}
           <a
             href="/projects"
-            className="hover:text-gray- font-semibold transition-colors duration-200"
+            className="hover:text-secondary font-semibold transition-colors duration-200"
           >
             Projetos
           </a>
           <a
             href="/events"
-            className="hover:text-gray- font-semibold transition-colors duration-200"
+            className="hover:text-secondary font-semibold transition-colors duration-200"
           >
             Eventos
           </a>
           <a
             href="/store"
-            className="hover:text-gray- font-semibold transition-colors duration-200"
+            className="hover:text-secondary font-semibold transition-colors duration-200"
           >
             Loja
           </a>
           <a
             href="/blog"
-            className="hover:text-gray- font-semibold transition-colors duration-200"
+            className="hover:text-secondary font-semibold transition-colors duration-200"
           >
             Blog
           </a>
@@ -109,7 +109,7 @@ const Header = () => {
             href="https://www.facebook.com/holodeckcommunity"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-900 hover:text-white transition-colors duration-200"
+            className="text-black transition-colors duration-200"
             aria-label="Facebook"
           >
             <FaFacebook />
@@ -118,7 +118,7 @@ const Header = () => {
             href="https://www.instagram.com/holodeckcommunity/profilecard/?igsh=bzJ6Zmlua3h3aHQ="
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-900 hover:text-white transition-colors duration-200"
+            className="text-black transition-colors duration-200"
             aria-label="Instagram"
           >
             <FaInstagram />
@@ -127,7 +127,7 @@ const Header = () => {
             href="https://www.linkedin.com/in/holodeck-technologies-community?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-900 hover:text-white transition-colors duration-200"
+            className="text-black transition-colors duration-200"
             aria-label="LinkedIn"
           >
             <FaLinkedin />
@@ -138,22 +138,22 @@ const Header = () => {
 
 
       {/* Linha Verde-Limão */}
-      <div className="bg-lime-400 h-1"></div>
+      <div className="bg-primary h-1"></div>
 
       {/* Menu Mobile */}
       <motion.nav
         initial={{ opacity: 0, x: "100%" }}
         animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : "100%" }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className={`fixed top-0 right-0 z-50 bg-slate-100 h-full w-[75vw] max-w-sm flex flex-col items-end py-6 px-4 space-y-6 text-xl font-semibold lg:hidden ${
+        className={`fixed top-0 right-0 z-50 bg-white h-full w-[75vw] max-w-sm flex flex-col items-end py-6 px-4 space-y-6 text-xl font-semibold lg:hidden ${
           isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
-        } border-l border-[#ffffff40] rounded-bl-lg`}
+        } border-l border-primary rounded-bl-lg`}
       >
         {/* Ícone de Fechar para Menu Mobile */}
         <button
           onClick={toggleMenu}
           aria-label="Close Menu"
-          className="text-gray-900 mb-4"
+          className="text-secondary mb-4"
         >
           <AiOutlineClose size={30} />
         </button>
@@ -163,7 +163,7 @@ const Header = () => {
           <a
             href="/"
             onClick={toggleMenu}
-            className="hover:text-gray-900 transition border-b border-lime-500 py-2 w-full text-right flex items-center space-x-2"
+            className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
           >
             <AiOutlineHome size={20} />
             <span>Home</span>
@@ -171,7 +171,7 @@ const Header = () => {
           {/* <a
               href="/contact"
               onClick={toggleMenu}
-              className="hover:text-gray-900 transition border-b border-lime-500 py-2 w-full text-right flex items-center space-x-2"
+              className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
             >
               <AiOutlineMail size={20} />
               <span>Contato</span>
@@ -179,7 +179,7 @@ const Header = () => {
           <a
             href="/communityjoin"
             onClick={toggleMenu}
-            className="hover:text-gray-900 transition border-b border-lime-500 py-2 w-full text-right flex items-center space-x-2"
+            className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
           >
             <AiOutlineUserAdd size={20} />
             <span>Comunidade</span>
@@ -187,7 +187,7 @@ const Header = () => {
           {/* <a
               href="/collaborator"
               onClick={toggleMenu}
-              className="hover:text-gray-900 transition border-b border-lime-500 py-2 w-full text-right flex items-center space-x-2"
+              className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
             >
               <AiOutlineUsergroupAdd size={20} />
               <span>Colaborador</span>
@@ -195,7 +195,7 @@ const Header = () => {
           <a
             href="/projects"
             onClick={toggleMenu}
-            className="hover:text-gray-900 transition border-b border-lime-500 py-2 w-full text-right flex items-center space-x-2"
+            className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
           >
             <AiOutlineProject size={20} />
             <span>Projetos</span>
@@ -203,7 +203,7 @@ const Header = () => {
           <a
             href="/events"
             onClick={toggleMenu}
-            className="hover:text-gray-900 transition border-b border-lime-500 py-2 w-full text-right flex items-center space-x-2"
+            className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
           >
             <AiOutlineCalendar size={20} />
             <span>Eventos</span>
@@ -211,7 +211,7 @@ const Header = () => {
           <a
             href="/store"
             onClick={toggleMenu}
-            className="hover:text-gray-900 transition border-b border-lime-500 py-2 w-full text-right flex items-center space-x-2"
+            className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
           >
             <AiOutlineShoppingCart size={20} />
             <span>Loja</span>
@@ -219,7 +219,7 @@ const Header = () => {
           <a
             href="/blog"
             onClick={toggleMenu}
-            className="hover:text-gray-900 transition border-b border-lime-500 py-2 w-full text-right flex items-center space-x-2"
+            className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
           >
             <AiOutlineBook size={20} />
             <span>Blog</span>
@@ -232,7 +232,7 @@ const Header = () => {
             href="https://www.facebook.com/holodeckcommunity"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-900 hover:text-white transition-colors duration-200"
+            className="text-secondary hover:text-white transition-colors duration-200"
             aria-label="Facebook"
           >
             <FaFacebook />
@@ -241,7 +241,7 @@ const Header = () => {
             href="https://www.instagram.com/holodeckcommunity/profilecard/?igsh=bzJ6Zmlua3h3aHQ="
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-900 hover:text-white transition-colors duration-200"
+            className="text-secondary hover:text-white transition-colors duration-200"
             aria-label="Instagram"
           >
             <FaInstagram />
@@ -250,7 +250,7 @@ const Header = () => {
             href="https://www.linkedin.com/in/holodeck-technologies-community?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-900 hover:text-white transition-colors duration-200"
+            className="text-secondary hover:text-white transition-colors duration-200"
             aria-label="LinkedIn"
           >
             <FaLinkedin />

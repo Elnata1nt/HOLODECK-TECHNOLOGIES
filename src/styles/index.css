@@ -1,19 +1,37 @@
-/* src/styles/index.css */
+/* styles/globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Importar fontes */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=New+Amsterdam:wght@400;700&display=swap");
+
+/* Definir variáveis de cor (não necessário se usar Tailwind) */
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    /* background-color: #EBF8FF; */
+  --color-primary: #a9e916;
+  /* --color-base: #f7114b; */
+  --color-secondary: #3c297a;
+  --color-secondaryporple: #5015bd;
+  --color-third: #364461;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-whitebg: #e4ebf0;
 }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+/* styles/globals.css ou um módulo CSS específico */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
   }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
