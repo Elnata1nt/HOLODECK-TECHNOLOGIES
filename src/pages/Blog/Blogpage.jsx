@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ArticleMain from '@/components/Blog/ArticleMain';
 import ArticlesSection from '@/components/Blog/ArticlesSection';
 import FilterSection from '@/components/Blog/FilterSection';
-import { newsArticles } from '@/components/blog/mockArticles';
+import { newsArticles } from '@/components/Blog/mockArticles';
 
 // Esse cache salva muito, pois reduz o número de requisições do backend (temporário)
 const cache = { news: newsArticles };
