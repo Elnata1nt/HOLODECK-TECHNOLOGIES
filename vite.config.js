@@ -4,7 +4,6 @@ import path from 'path';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 
-
 export default defineConfig({
   plugins: [react()],
   css: {
@@ -14,6 +13,9 @@ export default defineConfig({
         autoprefixer(),
       ],
     },
+  },
+  optimizeDeps: {
+    include: ['@monaco-editor/react'],
   },
   base: '/',
   server: {

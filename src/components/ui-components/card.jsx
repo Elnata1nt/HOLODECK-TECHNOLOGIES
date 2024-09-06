@@ -1,13 +1,24 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const CardComponent = ({ title, content, linkText, linkHref, imageSrc }) => {
   return (
-    <div className="bg-black p-6 rounded-md shadow-md flex flex-col">
+    <motion.div
+      className="bg-black p-6 shadow-md flex flex-col"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ scale: 1.05 }} // Animação ao passar o mouse
+    >
       {imageSrc && (
-        <img
+        <motion.img
           src={imageSrc}
           alt={title}
           className="w-full h-48 object-cover rounded-t-lg mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
         />
       )}
       {title && (
@@ -20,13 +31,12 @@ const CardComponent = ({ title, content, linkText, linkHref, imageSrc }) => {
       )}
       {linkText && linkHref && (
         <div className="flex justify-center mt-auto">
-          <a href={linkHref} className="text-secondaryporple">
+          <a href={linkHref} className="text-secondary">
             {linkText}
           </a>
         </div>
       )}
-    </div>
-    
+    </motion.div>
   );
 };
 

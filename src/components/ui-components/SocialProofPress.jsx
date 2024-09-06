@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const SocialProofPress = ({ quotes }) => {
   return (
-    <section className="bg-black py-8 ">
+    <section className="bg-black py-8 border-t-2 border-b-2 border-black ">
       <h2 className="text-2xl font-bold text-center text-primary mb-6">
         O Que Estão Dizendo Sobre Nós
       </h2>

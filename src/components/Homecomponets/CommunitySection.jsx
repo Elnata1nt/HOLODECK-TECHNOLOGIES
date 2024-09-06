@@ -1,16 +1,28 @@
 // src/components/CommunitySection.jsx
 import React from "react";
+import { motion } from "framer-motion";
 import CardComponent from "../ui-components/card";
 import Bg from "../Layout/GridPattern"; // Ajuste o caminho conforme necessário
 
+const titleVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const CommunitySection = () => {
   return (
-    <section className="w-full p-8 bg-third text-white relative">
-      <Bg /> 
+    <section className="w-full p-4 bg-third text-white relative">
+      <Bg />
       <div className="w-full max-w-screen-xl mx-auto relative z-10">
-        <h1 className="text-4xl my-8 border-l-8  border-r-8 justify-center text-center border-black text-white font-bold">
+        <motion.h1
+          className="text-4xl my-8 border-l-8 border-r-8 justify-center text-center border-black text-white font-bold"
+          variants={titleVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, type: "spring", stiffness: 70 }}
+        >
           Explore Nossa Comunidade
-        </h1>
+        </motion.h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <CardComponent
             title="Projetos com API"
@@ -35,7 +47,7 @@ const CommunitySection = () => {
           />
         </div>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent rounded-lg"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
     </section>
   );
 };

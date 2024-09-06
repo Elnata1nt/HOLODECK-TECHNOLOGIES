@@ -14,9 +14,9 @@ export default {
       colors: {
         primary: '#a9e916',         // Substituído por --color-primary
         // base: '#f7114b',    
-        secondary: '#3c297a',       // Substituído por --color-secondary
-        secondaryporple: '#5015bd', // secondaryporple
-        third: '#364461',           // Substituído por --color-third
+        secondary: '#5015bd',      // Substituído por --color-secondary
+        secondaryporple: '#3c297a',  // secondaryporple
+        third: '#364461',           // Substituído por --color-third'
         black: '#000000',           // Substituído por --color-black
         white: '#ffffff',           // Substituído por --color-white
         whitebg: '#e4ebf0',           // Substituído por --color-white

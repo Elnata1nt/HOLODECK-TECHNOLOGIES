@@ -2,8 +2,8 @@ import React from 'react';
 import { useId } from 'react';
 
 function GridPattern({
-  width = 40,
-  height = 40,
+  width = 90,
+  height = 90,
   x = -1,
   y = -1,
   strokeDasharray = 0,

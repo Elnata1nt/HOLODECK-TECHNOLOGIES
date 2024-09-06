@@ -2,7 +2,7 @@ import React from 'react';
 import { useId } from 'react';
 
 function GridPattern({
-  width = 40,
+  width = 45,
   height = 40,
   x = -1,
   y = -1,
