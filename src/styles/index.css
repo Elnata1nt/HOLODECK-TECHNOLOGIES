@@ -1,14 +1,14 @@
-/* styles/globals.css */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Importar fontes */
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=New+Amsterdam:wght@400;700&display=swap");
 
 /* Definir variáveis de cor (não necessário se usar Tailwind) */
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
   --color-primary: #a9e916;
   --color-secondary: #5015bd;
