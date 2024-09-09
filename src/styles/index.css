@@ -19,6 +19,17 @@
   --color-white: #ffffff;
   --color-whitebg: #e4ebf0;
 }
+/* dark mode */
+[data-theme="dark"] {
+  --color-primary: #a9e916; 
+  --color-secondary: #d1b3ff;
+  --color-secondarypurple: #8a5cff; 
+  --color-third: #29323c; 
+  --color-black: #1a1a1a; 
+  --color-white: #f2f2f2; 
+  --color-whitebg: #1f1f1f;
+}
+
 
 /* styles/globals.css ou um módulo CSS específico */
 
