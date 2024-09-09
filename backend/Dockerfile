@@ -13,9 +13,6 @@ RUN npm install
 # Copie o restante dos arquivos do projeto
 COPY . .
 
-# Compile o projeto (se necessário)
-RUN npm run build
-
 # Exponha a porta que o aplicativo usará
 EXPOSE 5173
 
