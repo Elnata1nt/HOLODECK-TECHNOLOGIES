@@ -1,7 +1,7 @@
 // src/components/CommunitySection.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import CardComponent from "../ui-components/card";
+import CardComponent from "../Common/Card";
 import Bg from "../Layout/GridPattern"; // Ajuste o caminho conforme necessário
 
 const titleVariants = {
@@ -11,11 +11,11 @@ const titleVariants = {
 
 const CommunitySection = () => {
   return (
-    <section className="w-full p-4 bg-third text-white relative">
+    <section className="w-full p-4 bg-black text-white relative">
       <Bg />
       <div className="w-full max-w-screen-xl mx-auto relative z-10">
         <motion.h1
-          className="text-4xl my-8 border-l-8 border-r-8 justify-center text-center border-black text-white font-bold"
+          className="text-4xl my-8 border-l-8 border-r-8 justify-center text-center border-secondary text-white font-bold"
           variants={titleVariants}
           initial="hidden"
           animate="visible"

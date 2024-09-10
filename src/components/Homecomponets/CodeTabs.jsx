@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import GridBack from "../Layout/GridBackground";
-import Tooltip from '../ui-components/Tooltip'; // Certifique-se de que o caminho está correto
+// import GridBack from "../Layout/GridBackground";
 
 // Exemplos de código para cada linguagem
 const codeSnippets = {
@@ -173,7 +172,7 @@ function CodeTabs() {
 
   return (
     <div className="relative"> {/* Torna o conteúdo posicionado em relação ao fundo */}
-      <GridBack /> {/* Adiciona o GridBack como fundo */}
+      {/* <GridBack />  */}
       
       <div className="flex items-center justify-center bg-gradient-to-r py-12 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-white shadow-lg overflow-hidden max-w-4xl w-full flex flex-col lg:flex-row">
@@ -186,7 +185,7 @@ function CodeTabs() {
                   key={tab.value}
                   className={`px-4 py-2 text-sm font-semibold transition-all duration-300 ${
                     selectedTab === tab.value
-                      ? 'bg-primary text-white shadow-md'
+                      ? 'bg-secondary text-white shadow-md'
                       : 'bg-white text-black hover:bg-black hover:text-white'
                   }`}
                   onClick={() => setSelectedTab(tab.value)}

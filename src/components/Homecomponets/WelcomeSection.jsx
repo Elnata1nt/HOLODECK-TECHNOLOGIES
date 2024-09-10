@@ -19,7 +19,7 @@ const WelcomeSection = () => {
   return (
     <section className="relative flex items-center justify-center min-h-screen bg-black py-20 lm:py-28 border-b-2 border-primary px-4 overflow-hidden">
       <GridBack />
-      <div className="relative max-w-8xl py-20 bg-black mx-auto px-4 md:px-32 text-center">
+      <div className="relative max-w-8xl py-20 bg-black md:border-2 border-whitebg mx-auto px-4 md:px-32 text-center">
         {" "}
         {/* px ajustado para mobile */}
         <motion.h1
@@ -46,7 +46,7 @@ const WelcomeSection = () => {
           tecnológico e fazer parte de algo verdadeiramente extraordinário!
         </motion.p>
 
-        <div className="flex flex-col sm:flex-row sm:justify-center sm:space-x-4 mt-8">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-2 mt-10">
           <motion.a
             href="/login"
             className="bg-secondary text-white px-6 py-3 font-semibold hover:bg-primary transition duration-300 text-center w-full sm:w-40 md:w-auto "
