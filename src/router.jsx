@@ -1,16 +1,17 @@
 // src/AppRouter.jsx
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Home from './pages/Home/Homepage';
-import CommunityJoin from './pages/Community/CommunityJoin';
-import Projects from './pages/Projects/Projects';
-import Events from './pages/EventsHolo/Events';
-import Store from './pages/Store/Shopping';
-import Blog from './pages/Blog/Blogpage'
-import Login from './pages/Auth/LoginPage'; 
-import Register from './pages/Auth/RegisterPage'; 
-import PrivacyPolicy from './utils/validators/PrivacyPolicy';
+import Home from "./pages/Home/Homepage";
+import CommunityJoin from "./pages/Community/CommunityJoin";
+// import Collaborator from "./pages/Collaborator/Collaborator";
+import Projects from "./pages/Projects/Projects";
+import Events from "./pages/EventsHolo/Events";
+import Store from "./pages/Store/Shopping";
+import Blog from "./pages/Blog/Blogpage";
+import Login from "./pages/Auth/LoginPage";
+import Register from "./pages/Auth/RegisterPage";
+import PrivacyPolicy from "./utils/validators/PrivacyPolicy";
 
 function AppRouter() {
   return (
@@ -18,11 +19,12 @@ function AppRouter() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/communityjoin" element={<CommunityJoin />} />
+        {/* <Route path="/collaborator" element={<Collaborator />} /> */}
         <Route path="/projects" element={<Projects />} />
         <Route path="/events" element={<Events />} />
         <Route path="/store" element={<Store />} />
-        <Route path="/login" element={<Login />} /> 
-        <Route path="/register" element={<Register />} /> 
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/blog" element={<Blog />} />
         {/* Adicione outras rotas conforme a estrutura das páginas */}
@@ -32,10 +34,6 @@ function AppRouter() {
 }
 
 export default AppRouter;
-
-
-
-
 
 // src/router.jsx
 // import React from 'react';
@@ -66,8 +64,8 @@ export default AppRouter;
 //         <Route path="/store" element={<Store />} />
 //         <Route path="/blog" element={<Blog />} />
 //         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-        // <Route path="/login" element={<Login />} /> {/* Adicionando a rota de Login */}
-        // <Route path="/register" element={<Register />} /> {/* Adicionando a rota de Register */}
+// <Route path="/login" element={<Login />} /> {/* Adicionando a rota de Login */}
+// <Route path="/register" element={<Register />} /> {/* Adicionando a rota de Register */}
 //       </Routes>
 //     </Router>
 //   );
