@@ -1,24 +1,37 @@
-/* styles/globals.css */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Importar fontes */
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=New+Amsterdam:wght@400;700&display=swap");
 
 /* Definir variáveis de cor (não necessário se usar Tailwind) */
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
   --color-primary: #a9e916;
-  /* --color-base: #f7114b; */
   --color-secondary: #5015bd;
-  --color-secondaryporple: #3c297a;
+  --color-secondarypurple: #3c297a;
   --color-third: #364461;
   --color-black: #000000;
   --color-white: #ffffff;
   --color-whitebg: #e4ebf0;
 }
+
+/* agora só precisamos aplicar as variáveis de cor pra aplicar no modo dark*/
+/* dark mode */
+[data-theme="dark"] {
+  --color-primary: #a9e916; 
+  --color-secondary: #d1b3ff;
+  --color-secondarypurple: #8a5cff; 
+  --color-third: #29323c; 
+  --color-black: #1a1a1a; 
+  --color-white: #f2f2f2; 
+  --color-whitebg: #1f1f1f;
+}
+
+
 
 /* styles/globals.css ou um módulo CSS específico */
 

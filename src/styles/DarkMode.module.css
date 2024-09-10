@@ -1,0 +1,100 @@
+.switch {
+  font-size: 17px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-block;
+  width: 4rem;
+  height: 35px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-whitebg); /* Usando a variável correta */
+  transition: 0.4s;
+  border-radius: 20px;
+  border: none;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  left: 2px;
+  bottom: 2px;
+  z-index: 2;
+  background-color: var(--color-black); /* Cor do botão */
+  transition: 0.4s;
+}
+
+.sun svg {
+  position: absolute;
+  top: 6px;
+  left: 36px;
+  z-index: 1;
+  width: 25px;
+  height: 25px;
+  fill: var(--color-primary); /* Cor do Sol */
+  animation: rotate 9s linear infinite;
+}
+
+.moon svg {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  width: 25px;
+  height: 25px;
+  fill: var(--color-secondary); /* Cor da Lua */
+  animation: tilt 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.input + .slider {
+  background-color: var(--color-whitebg); /* Fundo no modo claro */
+}
+
+.input:checked + .slider {
+  background-color: var(--color-black); /* Fundo no modo escuro */
+}
+
+.input:checked + .slider:before {
+  transform: translateX(30px);
+  background-color: var(--color-white); /* Botão no modo escuro */
+}

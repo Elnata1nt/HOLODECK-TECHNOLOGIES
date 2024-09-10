@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DATABASE_URL=postgresql://holodeck_admin:holodeckstrongpass@db:5432/holodeck_db
+      - JWT_SECRET=&dHVu^g9!n&iVoQUnLke4Qw$^holodeckcommunity^&dHVu^g9!n&iVoQUnLke4Qw$
+
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  frontend:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - app-network
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: holodeck_admin
+      POSTGRES_PASSWORD: holodeckstrongpass
+      POSTGRES_DB: holodeck_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
