@@ -13,7 +13,6 @@ import {
 } from "react-icons/ai";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
-import DarkMode from "./../ui-components/DarkMode";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -105,7 +104,7 @@ const Header = () => {
         </nav>
 
         {/* Ícones Sociais Desktop */}
-        <div className="hidden lg:flex items-center space-x-4 pr-14">
+        <div className="hidden lg:flex items-center space-x-4">
           <a
             href="https://www.facebook.com/holodeckcommunity"
             target="_blank"
@@ -133,9 +132,10 @@ const Header = () => {
           >
             <FaLinkedin />
           </a>
-          <DarkMode />
         </div>
       </div>
+
+
 
       {/* Linha Verde-Limão */}
       <div className="bg-primary h-1"></div>
@@ -262,3 +262,4 @@ const Header = () => {
 };
 
 export default Header;
+
