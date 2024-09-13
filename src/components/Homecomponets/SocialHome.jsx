@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 
 const SocialProofPress = ({ quotes }) => {
   return (
-    <section className="bg-black py-8 border-t-2 border-b-2 border-black ">
-      <h2 className="text-2xl font-bold text-center text-primary mb-6">
+    <section className="bg-whitebg py-6 ">
+      <h2 className="text-2xl font-bold text-center text-third mb-6">
         O Que Estão Dizendo Sobre Nós
       </h2>
       <div className="overflow-hidden">
@@ -19,11 +19,11 @@ const SocialProofPress = ({ quotes }) => {
           {quotes.map((quote, index) => (
             <motion.div
               key={index}
-              className="bg-white shadow-lg rounded-lg p-6 flex-none"
+              className="bg-black shadow-lg p-6 flex-none"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <p className="text-base italic text-gray-600 mb-4">
+              <p className="text-base italic text-white mb-4">
                 "{quote.text}"
               </p>
               <h3 className="text-lg font-semibold text-primary">

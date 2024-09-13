@@ -1,18 +1,18 @@
 // src/pages/Home.jsx
 import React from "react";
 import WelcomeSection from "../../components/Homecomponets/WelcomeSection";
-// import CommunitySection from "../../components/Homecomponets/HomeSection";
-import SocialProofPress from "../../components/Homecomponets/SocialProofPress";
-import CodeTabs from "../../components/Homecomponets/CodeTabs";
+import AboutHome from "../../components/Homecomponets/AboutHome";
+import SocialProofPress from "../../components/Homecomponets/SocialHome";
+import Partners from "../../components/Homecomponets/Partners";
 import { quotes } from "../../data/quotes";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-black">
       <WelcomeSection />
-      <CodeTabs />
-      {/* <CommunitySection /> */}
+      <AboutHome />
       <SocialProofPress quotes={quotes} />
+      <Partners />
     </div>
   );
 };

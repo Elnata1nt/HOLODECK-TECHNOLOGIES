@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion"; // Opcional para animações suaves
 
-const   TokenomicsSection = () => {
+const TokenomicsSection = () => {
   return (
     <section className="bg-white text-black py-20 px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -87,11 +87,6 @@ const   TokenomicsSection = () => {
               </div>
             </div>
           </div>
-
-          {/* Botão de Ação */}
-          <a href="#" className="bg-secondary text-white py-3 px-6">
-            Iniciar Staking
-          </a>
         </div>
 
         {/* Imagem da Direita */}
@@ -99,13 +94,15 @@ const   TokenomicsSection = () => {
           {/* Contêiner para a imagem ou elemento gráfico */}
           <div className="w-full h-full flex justify-center items-center relative">
             {/* Contêiner responsivo com bordas arredondadas e overflow para conteúdo */}
-            <div className="w-80 h-80 sm:w-96 sm:h-96 lg:w-[600px] md:ml-10 lg:h-[800px] bg-secondary rounded-lg shadow-lg overflow-hidden flex items-center justify-center">
+            <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[600px] lg:h-[800px] bg-secondary rounded-lg shadow-lg overflow-hidden flex items-center justify-center">
               {/* Imagem responsiva, cobrindo todo o contêiner */}
               <img
                 src="src/assets/images/Home/communithome.jpg"
                 alt="Descrição da imagem"
                 className="w-full h-full object-cover"
               />
+              {/* Gradiente sobre a imagem */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
             </div>
           </div>
         </div>

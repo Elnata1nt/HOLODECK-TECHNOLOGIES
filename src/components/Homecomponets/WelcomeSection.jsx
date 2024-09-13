@@ -1,69 +1,48 @@
 import React from "react";
 import { motion } from "framer-motion";
-import GridBack from "../Layout/GridBackground"; // Ajuste o caminho conforme necessário
-
-// Definindo a animação para os botões
-const buttonAnimation = {
-  hidden: { opacity: 0, y: 0 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1.9,
-      ease: "easeInOut",
-    },
-  },
-};
+import GridBack from "../../components/Layout/GridBackground"; // Ajuste o caminho conforme necessário
 
 const WelcomeSection = () => {
   return (
-    <section className="relative flex items-center justify-center min-h-screen bg-black py-20 lm:py-28 border-b-2 border-primary px-4 overflow-hidden">
+    <section className="relative flex flex-col lg:flex-row lg:min-h-screen bg-black overflow-hidden">
       <GridBack />
-      <div className="relative max-w-8xl py-20 bg-black md:border-2 border-whitebg mx-auto px-4 md:px-32 text-center">
-        {" "}
-        {/* px ajustado para mobile */}
+      <div className="relative w-full max-w-4xl border-r-0 lg:border-r-2 border-gray-400/30 bg-black text-left px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:py-32">
         <motion.h1
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-3 leading-tight md:leading-snug"
+          className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight"
         >
-          BEM VINDO AO MUNDO
-          <br className="hidden md:block" />
-          <span className="text-primary border-b-2 border-white">
-            {" "}
-            HOLODECK TECHNOLOGIES
-          </span>
+          BEM VINDO AO MUNDO <span className="text-primary">HOLODECK</span>{" "}
+          <span className="text-secondary">TECHNOLOGIES</span>
         </motion.h1>
         <motion.p
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="text-lg md:text-xl lg:text-lg mt-5 font-barlow text-gray-200"
+          transition={{ duration: 1, delay: 0.5 }}
+          className="text-lg sm:text-lg md:text-xl lg:text-2xl text-gray-400 mb-28 sm:mb-8 md:mb-10"
         >
-          Prepare-se para descobrir novas fronteiras no desenvolvimento{" "}
-          <br className="hidden sm:block" />
-          tecnológico e fazer parte de algo verdadeiramente extraordinário!
+          Transformando ideias em soluções tecnológicas inovadoras. Conectamos o
+          futuro ao presente com desenvolvimento de software de alta qualidade.
         </motion.p>
-
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-2 mt-10">
+        <div className="flex flex-col sm:flex-row gap-4">
           <motion.a
-            href="/login"
-            className="bg-secondary text-white px-6 py-3 font-semibold hover:bg-primary transition duration-300 text-center w-full sm:w-40 md:w-auto "
-            initial="hidden"
-            animate="visible"
-            variants={buttonAnimation}
+            href="/get-started"
+            className="bg-white text-black px-4 py-2 sm:px-5 sm:py-3 md:px-6 font-semibold border border-white hover:bg-gray-100 transition duration-300 text-center flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            Faça seu Login
+            Faça seu Orçamento
           </motion.a>
           <motion.a
-            href="/contact"
-            className="bg-white text-secondary px-6 py-3 font-semibold hover:bg-primary transition duration-300 text-center w-full sm:w-40 md:w-auto "
-            initial="hidden"
-            animate="visible"
-            variants={buttonAnimation}
+            href="/contact-sales"
+            className="bg-transparent text-white px-4 py-2 sm:px-5 sm:py-3 md:px-6 font-semibold border border-white hover:bg-gray-800 transition duration-300 text-center flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            Contate-nos
+            Projetos
           </motion.a>
         </div>
       </div>

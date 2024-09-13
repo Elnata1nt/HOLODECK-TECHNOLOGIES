@@ -17,12 +17,13 @@ const BOTScreen = () => {
           Somos especialistas em desenvolvimento de sites e soluções tecnológicas sob medida para o seu negócio.
           Combinamos design inovador e tecnologia de ponta para criar experiências únicas e impulsionar sua marca.
           Com isso vamos juntos elevar seu negócio ao próximo nível!<br /><br />
-          "A tecnologia naão possui limites"
+
+          ..
         </p>
       </div>
 
       {/* Seção de Benefícios */}
-      <div className="bg-black text-white p-8 md:p-16">
+      <div className="bg-black text-white p-6 md:p-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Coluna 1 */}
           <div className="space-y-6 md:space-y-8">
@@ -30,19 +31,19 @@ const BOTScreen = () => {
               VAMOS COMBINAR VOCÊ COM UMA EMPRESA GLOBAL INOVADORA
             </h3>
             <div className="flex items-center space-x-4">
-              <FaTag size={24} md={32} />
+              <FaTag size={30} md={32} />
               <p className="text-base md:text-lg">
                 A maioria das empresas com as quais trabalhamos está criando produtos únicos do zero.
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <FaLaptopCode size={24} md={32} />
+              <FaLaptopCode size={39} md={32} />
               <p className="text-base md:text-lg">
                 Trabalhe nas tecnologias mais inovadoras que grandes empresas globais e startups estão desenvolvendo.
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <FaCheck size={24} md={32} />
+              <FaCheck size={30} md={32} />
               <p className="text-base md:text-lg">
                 Teste sua relação de trabalho com a empresa antes de deixá-los adquiri-lo.
               </p>
@@ -55,19 +56,19 @@ const BOTScreen = () => {
               VOCÊ VAI TRABALHAR DIRETAMENTE COM A EMPRESA
             </h3>
             <div className="flex items-center space-x-4">
-              <FaMoneyBill size={24} md={32} />
+              <FaMoneyBill size={30} md={32} />
               <p className="text-base md:text-lg">
                 Negocie sua remuneração e benefícios de ações diretamente.
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <FaCalendarAlt size={24} md={32} />
+              <FaCalendarAlt size={30} md={32} />
               <p className="text-base md:text-lg">
                 Acorde um cronograma de trabalho diretamente com a empresa.
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <FaClock size={24} md={32} />
+              <FaClock size={30} md={32} />
               <p className="text-base md:text-lg">
                 Não vamos obrigá-lo a usar rastreadores de tempo.
               </p>
@@ -80,20 +81,20 @@ const BOTScreen = () => {
               CRESÇA NA SUA CARREIRA
             </h3>
             <div className="flex items-center space-x-4">
-              <FaChartLine size={24} md={32} />
+              <FaChartLine size={39} md={32} />
               <p className="text-base md:text-lg">
                 Receba promoções e aumentos de salário com base inteiramente nos seus resultados,
                 e não em passar por uma matriz complicada.
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <FaEye size={24} md={32} />
+              <FaEye size={30} md={32} />
               <p className="text-base md:text-lg">
                 Explore o funcionamento interno de como grandes empresas globais e startups operam.
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <FaThumbsUp size={24} md={32} />
+              <FaThumbsUp size={30} md={32} />
               <p className="text-base md:text-lg">
                 Implemente suas ideias e iniciativas como um membro de pleno direito da equipe de produtos.
               </p>

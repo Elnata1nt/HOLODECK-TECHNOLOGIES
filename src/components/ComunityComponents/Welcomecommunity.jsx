@@ -56,18 +56,24 @@ const WelcomeSection = () => {
         </motion.p>
 
         {/* Botões com animação diferenciada */}
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-2">
+        <div className="flex flex-col justify-center sm:flex-row gap-4">
           <motion.a
-            href="/login"
-            className="bg-secondary text-white px-6 py-3 font-semibold hover:bg-primary hover:text-black transition duration-300 text-center w-full sm:w-40 md:w-auto "
+            href="/get-started"
+            className="bg-white text-black px-5 py-3 sm:px-6 font-semibold border border-white hover:bg-primary transition duration-300 text-center flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
           >
             Faça seu Login
           </motion.a>
           <motion.a
-            href="/contact"
-            className="bg-whitebg text-secondary px-6 py-3 font-semibold hover:bg-primary transition duration-300 text-center w-full sm:w-40 md:w-auto "
+            href="/contact-sales"
+            className="bg-transparent text-white px-5 py-3 sm:px-6 font-semibold border border-white hover:bg-gray-800 transition duration-300 text-center flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            Contate-nos
+            Crie sua conta
           </motion.a>
         </div>
       </div>

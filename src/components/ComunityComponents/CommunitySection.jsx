@@ -15,7 +15,7 @@ const CommunitySection = () => {
       <Bg />
       <div className="w-full max-w-screen-xl mx-auto relative z-10">
         <motion.h1
-          className="text-4xl my-8 border-l-8 border-r-8 justify-center text-center border-secondary text-white font-bold"
+          className="text-4xl my-8 justify-center text-center  text-white font-bold"
           variants={titleVariants}
           initial="hidden"
           animate="visible"
@@ -36,7 +36,7 @@ const CommunitySection = () => {
             content="Explore nossa página de blog para acessar uma vasta gama de materiais de estudo e recursos úteis. Oferecemos apoio contínuo para o aprendizado e desenvolvimento, garantindo que você tenha acesso às melhores ferramentas e informações disponíveis para impulsionar seus projetos e aprimorar suas habilidades."
             linkText="Playground da Biblioteca"
             linkHref="/projects"
-            imageSrc="src/assets/images/Home/comunidadehome.jpg" // Substitua com a URL real da sua imagem
+            imageSrc="https://devdocs.io/" // Substitua com a URL real da sua imagem
           />
           <CardComponent
             title="Participe dos Eventos"
