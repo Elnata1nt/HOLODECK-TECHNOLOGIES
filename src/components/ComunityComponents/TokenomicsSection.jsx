@@ -1,4 +1,5 @@
 import React from "react";
+import { FaLock, FaCreditCard, FaShieldAlt } from "react-icons/fa"; // Importando ícones
 import { motion } from "framer-motion"; // Opcional para animações suaves
 
 const TokenomicsSection = () => {
@@ -20,8 +21,8 @@ const TokenomicsSection = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
             <div className="flex items-start">
               <div className="mr-4">
-                <span className="text-2xl bg-secondary p-3 rounded-full">
-                  🔒
+                <span className="text-2xl">
+                  <FaLock />
                 </span>
               </div>
               <div>
@@ -37,8 +38,8 @@ const TokenomicsSection = () => {
             </div>
             <div className="flex items-start">
               <div className="mr-4">
-                <span className="text-2xl bg-secondary p-3 rounded-full">
-                  💳
+                <span className="text-2xl">
+                  <FaCreditCard />
                 </span>
               </div>
               <div>
@@ -54,8 +55,8 @@ const TokenomicsSection = () => {
             </div>
             <div className="flex items-start">
               <div className="mr-4">
-                <span className="text-2xl bg-secondary p-3 rounded-full">
-                  🔒
+                <span className="text-2xl">
+                  <FaLock />
                 </span>
               </div>
               <div>
@@ -71,8 +72,8 @@ const TokenomicsSection = () => {
             </div>
             <div className="flex items-start">
               <div className="mr-4">
-                <span className="text-2xl bg-secondary p-3 rounded-full">
-                  🛡️
+                <span className="text-2xl">
+                  <FaShieldAlt />
                 </span>
               </div>
               <div>
@@ -92,12 +93,12 @@ const TokenomicsSection = () => {
         {/* Imagem da Direita */}
         <div className="md:w-1/2 flex justify-center">
           {/* Contêiner para a imagem ou elemento gráfico */}
-          <div className="w-full h-full flex justify-center items-center relative">
+          <div className="w-full h-full flex justify-end items-center relative">
             {/* Contêiner responsivo com bordas arredondadas e overflow para conteúdo */}
-            <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[600px] lg:h-[800px] bg-secondary rounded-lg shadow-lg overflow-hidden flex items-center justify-center">
+            <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[600px] lg:h-[800px] bg-secondary rounded-lg shadow-lg overflow-hidden flex items-center justify-and">
               {/* Imagem responsiva, cobrindo todo o contêiner */}
               <img
-                src="src/assets/images/Home/communithome.jpg"
+                src="src/assets/images/Comunidade/telascren.png"
                 alt="Descrição da imagem"
                 className="w-full h-full object-cover"
               />

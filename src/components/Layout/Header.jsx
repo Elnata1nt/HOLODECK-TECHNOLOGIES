@@ -25,8 +25,8 @@ const Header = () => {
     <header className="bg-white relative">
       <div className="container mx-auto flex text-black justify-between items-center py-4 px-6">
         {/* Logo com Fonte Personalizada */}
-        <div className="text-3xl font-bold">
-          Holodeck<span className="text-white"></span>
+        <div className="text-3xl text-secondary font-bold">
+          Holodeck
         </div>
 
         {/* Botão de Menu para Modo Mobile */}
@@ -39,7 +39,7 @@ const Header = () => {
           <button
             onClick={toggleMenu}
             aria-label="Toggle Menu"
-            className="text-black"
+            className="text-secondary"
           >
             {isMenuOpen ? (
               <AiOutlineClose size={30} />
@@ -104,7 +104,7 @@ const Header = () => {
         </nav>
 
         {/* Ícones Sociais Desktop */}
-        <div className="hidden lg:flex items-center space-x-4">
+        {/* <div className="hidden lg:flex items-center space-x-4">
           <a
             href="https://www.facebook.com/holodeckcommunity"
             target="_blank"
@@ -132,7 +132,7 @@ const Header = () => {
           >
             <FaLinkedin />
           </a>
-        </div>
+        </div> */}
       </div>
 
 
@@ -232,7 +232,7 @@ const Header = () => {
             href="https://www.facebook.com/holodeckcommunity"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-secondary hover:text-white transition-colors duration-200"
+            className="text-primary hover:text-white transition-colors duration-200"
             aria-label="Facebook"
           >
             <FaFacebook />
@@ -241,7 +241,7 @@ const Header = () => {
             href="https://www.instagram.com/holodeckcommunity/profilecard/?igsh=bzJ6Zmlua3h3aHQ="
             target="_blank"
             rel="noopener noreferrer"
-            className="text-secondary hover:text-white transition-colors duration-200"
+            className="text-primary hover:text-white transition-colors duration-200"
             aria-label="Instagram"
           >
             <FaInstagram />
@@ -250,7 +250,7 @@ const Header = () => {
             href="https://www.linkedin.com/in/holodeck-technologies-community?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-secondary hover:text-white transition-colors duration-200"
+            className="text-primary hover:text-white transition-colors duration-200"
             aria-label="LinkedIn"
           >
             <FaLinkedin />

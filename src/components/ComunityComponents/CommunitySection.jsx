@@ -29,21 +29,21 @@ const CommunitySection = () => {
             content="Utilize nossas APIs para o desenvolvimento de projetos inovadores e eficientes. Com uma documentação completa e suporte integrado, você pode facilmente integrar nossas APIs em seus projetos, garantindo uma experiência de desenvolvimento ágil e sem complicações."
             linkText="Playground da API"
             linkHref="#"
-            imageSrc="src/assets/images/Home/communithome.jpg" // Substitua com a URL real da sua imagem
+            imageSrc="src/assets/images/Home/cards/technot.png" // Substitua com a URL real da sua imagem
           />
           <CardComponent
             title="Recursos e Materiais de Estudo"
             content="Explore nossa página de blog para acessar uma vasta gama de materiais de estudo e recursos úteis. Oferecemos apoio contínuo para o aprendizado e desenvolvimento, garantindo que você tenha acesso às melhores ferramentas e informações disponíveis para impulsionar seus projetos e aprimorar suas habilidades."
             linkText="Playground da Biblioteca"
-            linkHref="/projects"
-            imageSrc="https://devdocs.io/" // Substitua com a URL real da sua imagem
+            linkHref="https://devdocs.io/"
+            imageSrc="src/assets/images/Home/cards/imgprogram.png" // Substitua com a URL real da sua imagem
           />
           <CardComponent
             title="Participe dos Eventos"
             content="Junte-se aos nossos eventos para networking, aprendizado e crescimento profissional. Participe de webinars, workshops e conferências organizadas pela comunidade."
             linkText="Ver Eventos"
             linkHref="/events"
-            imageSrc="src/assets/images/Home/cards/imgprogram.png" // Substitua com a URL real da sua imagem
+            imageSrc="src/assets/images/Home/comunidadehome.jpg" // Substitua com a URL real da sua imagem
           />
         </div>
       </div>

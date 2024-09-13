@@ -10,7 +10,7 @@ const SecaoHolodeck = () => {
         </h1>
 
         {/* Parágrafo de descrição */}
-        <p className="text-lg mb-6">
+        <p className="lg:text-lg text-base mb-6">
           A Holodeck surgiu com o propósito de fortalecer e renovar o incentivo
           à tecnologia na região Norte do Brasil. Criada para descobrir e
           desenvolver talentos que muitas vezes são ocultos ou silenciados pela
@@ -19,7 +19,7 @@ const SecaoHolodeck = () => {
         </p>
 
         {/* Parágrafo adicional com descrição do projeto */}
-        <p className="text-lg mb-6">
+        <p className="lg:text-lg text-base mb-6">
           A Holodeck Community tem como missão revelar potenciais escondidos e
           criar oportunidades para aqueles que desejam crescer no campo da
           tecnologia. Ao proporcionar acesso a recursos, redes de apoio e
@@ -29,7 +29,7 @@ const SecaoHolodeck = () => {
         </p>
 
         {/* Novo parágrafo sobre a Holodeck como empresa */}
-        <p className="text-lg mb-6">
+        <p className="lg:text-lg text-base mb-6">
           Além de ser uma comunidade, a Holodeck é também uma empresa focada no
           desenvolvimento de software e ferramentas tecnológicas inovadoras. A
           empresa atua na criação de soluções personalizadas para diferentes
@@ -40,7 +40,7 @@ const SecaoHolodeck = () => {
           atendendo tanto o mercado local quanto o nacional.
         </p>
 
-        <p className="text-lg mb-6">
+        <p className="lg:text-lg text-base mb-6">
           Fundada por Elnata Corrêa, a Holodeck Technologies se dedica a revelar
           e desenvolver talentos no campo da tecnologia. Nosso compromisso é
           oferecer acesso a recursos, redes de apoio e oportunidades de
@@ -54,11 +54,11 @@ const SecaoHolodeck = () => {
           <img
             src="src/assets/images/ElnataCorrea.JPG"
             alt="Elnata Corrêa"
-            className="w-16 h-16 rounded-full object-cover"
+            className="w-24 lg:w-16 h-16 rounded-full object-cover"
           />
           <div>
             <h3 className="text-gray-600 font-semibold">Créditos</h3>
-            <ul className="text-lg">
+            <ul className="lg:text-lg text-base font-extralight">
               <li>Elnata Corrêa (Fundador, Holodeck Technologies)</li>
             </ul>
           </div>

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const SocialProofPress = ({ quotes }) => {
   return (
     <section className="bg-whitebg py-6 ">
-      <h2 className="text-2xl font-bold text-center text-third mb-6">
+      <h2 className="text-lg lg:text-2xl font-extrabold text-center text-third mb-6">
         O Que Estão Dizendo Sobre Nós
       </h2>
       <div className="overflow-hidden">
