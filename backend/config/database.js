@@ -1,14 +1,16 @@
-const { Sequelize } = require('sequelize');
+import { PrismaClient } from '@prisma/client';
 
-// Configuração do Sequelize com Supabase
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
-});
+const prisma = new PrismaClient();
 
-module.exports = sequelize;
+export const testConnection = async () => {
+  try {
+    await prisma.$connect();
+    console.log('Conexão com o banco de dados bem-sucedida!');
+  } catch (error) {
+    console.error('Erro ao conectar com o banco de dados:', error);
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
+

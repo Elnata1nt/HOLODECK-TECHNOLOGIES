@@ -1,33 +1,38 @@
-const { checkPassword } = require('../utils/hashPassword');
-const { findUserByUsername } = require("../services/userService");
-const generateToken = require("../utils/createToken");
+import  utils  from '../utils/hashPassword.js'; 
+import  userService  from "../services/userService.js";
+import generateToken from "../utils/createToken.js";
 
 const login = async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
+  const user = await userService.findUserByEmail(email);
 
+  if (!user || user === null) {
+    return res.status(401).json({ success: false, message: 'Usuário sem cadastro' });
+  }
+  
+  
   try {
-    // Encontre o usuário pelo nome de usuário
-    const user = await findUserByUsername(username);
-
-    if (!user) {
-      return res.status(401).json({ success: false, message: 'Nome de usuário ou senha inválidos' });
-    }
 
     // Verifique a senha
-    const isMatch = await checkPassword(password, user.password);
-
+    const isMatch = await utils.checkPassword(password, user.password);
+    console.log(isMatch)
+    
     if (!isMatch) {
       return res.status(401).json({ success: false, message: 'Nome de usuário ou senha inválidos' });
     }
-
     // Gere um token JWT
     const token = await generateToken(user, 1);
 
-    res.json({ success: true, token });
-  } catch (error) {
+    const {roles, ...userResponseToken } = user;
+
+    res.json({
+      success: true,
+      user:userResponseToken,
+      token,
+    })  } catch (error) {
     console.error('Erro ao tentar fazer login:', error);
     res.status(500).json({ success: false, message: 'Erro interno do servidor' });
   }
 };
 
-module.exports = { login };
+export default { login };

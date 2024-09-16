@@ -4,10 +4,10 @@ const validatePasswordVerification = (req, res, next) => {
     const errors = {};
     if (password !== passwordVerification){
         errors.passwordVerification = "Senhas não conferem.";
-        return Object.keys(errors).length ? errors : null;
+        return Object.keys(errors).length ? {success:false, message: errors} : null;
     }
 
     next();
   };
 
-module.exports = validatePasswordVerification;
+export default validatePasswordVerification;

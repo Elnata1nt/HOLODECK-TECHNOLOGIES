@@ -1,5 +1,5 @@
-const validator = require("validator");
-const CPFValidator = require("cpf-cnpj-validator");
+import validator from "validator";
+import CPFValidator from "cpf-cnpj-validator";
 
 //validar se os campos estão vazios
 const validateEmptyFields = ({
@@ -7,7 +7,6 @@ const validateEmptyFields = ({
   email,
   password,
   cpf,
-  username,
 }) => {
   const errors = {};
 
@@ -17,7 +16,6 @@ const validateEmptyFields = ({
   if (!trim(email)) errors.email = "Email é obrigatório.";
   if (!trim(password)) errors.password = "Senha é obrigatória.";
   if (!trim(cpf)) errors.cpf = "CPF é obrigatório.";
-  if (!trim(username)) errors.username = "Nome de usuário é obrigatório.";
 
   return Object.keys(errors).length ? errors : null;
 };
@@ -43,22 +41,21 @@ const validatePassword = (password) => {
   return Object.keys(errors).length ? errors : null;
 };
 
-
 // Função principal de validação
 const validations = async (req, res, next) => {
-  const { name, email, password, cpf, username } =req.body;
+  const { name, email, password, cpf } =req.body;
 
   try {
     // Validações básicas
     const errors = {
-      ...(validateEmptyFields({ name, email, password, cpf, username }) || {}),
+      ...(validateEmptyFields({ name, email, password, cpf }) || {}),
       ...(validateCpf(cpf) || {}),
       ...(validateEmail(email) || {}),
       ...(validatePassword(password) || {}),
     };
 
     if (Object.keys(errors).length > 0) {
-      return res.status(400).json({ success: false, errors });
+      return res.status(200).json({ success: false, message: errors });
     }
 
     // Se não houver conflitos, continua com a requisição
@@ -71,4 +68,4 @@ const validations = async (req, res, next) => {
   }
 };
 
-module.exports = validations;
+export default validations;

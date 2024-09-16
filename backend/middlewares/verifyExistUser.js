@@ -1,54 +1,51 @@
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+import userService from "../services/userService.js";
+
 
 // Função para verificar se um usuário já existe
 const verifyExistUser = async (req, res, next) => {
-  const { username, email, cpf } = req.body;
-
+  const { email, cpf } = req.body;
+  const cpfFormatted = cpf.replace(/\D/g, '');
   try {
-    // Inicia uma transação para buscar os usuários
-    const [userByUsername, userByEmail, userByCpf] = await prisma.$transaction([
-      prisma.user.findUnique({ where: { username } }),
-      prisma.user.findUnique({ where: { email } }),
-      prisma.user.findUnique({ where: { cpf } }),
+    // Executa as duas consultas em paralelo usando Promise.all
+    const [cpfVerify, emailVerify] = await Promise.all([
+      userService.findUserByCpf(cpfFormatted),
+      userService.findUserByEmail(email),
     ]);
 
-    // Cria um objeto para armazenar erros com mensagens padronizadas
+    // Cria um objeto para armazenar os erros
     const errors = {};
 
-    // Verifica se já existe um usuário com o mesmo username, email ou cpf
-    if (userByUsername) {
-      errors.username = "Nome de usuário indisponível.";
+    // Verifica se algum dos usuários existentes já corresponde ao email ou cpf
+    if (emailVerify) {
+      errors.email = "Email já cadastrado";
     }
-    if (userByEmail) {
-      errors.email = "Email já cadastrado.";
-    }
-    if (userByCpf) {
-      errors.cpf = "CPF já cadastrado.";
+    if (cpfVerify) {
+      errors.cpf = "CPF já cadastrado";
     }
 
     // Se houver erros, retorna uma resposta com status 400 e o objeto de erros
     if (Object.keys(errors).length > 0) {
-      return res.status(400).json({ success: false, errors });
+      return res.status(400).json({ success: false, message: errors });
     }
 
     // Se não houver conflitos, continua com a requisição
-    next();
+    return next();
   } catch (error) {
     console.error("Erro ao verificar existência do usuário:", error);
-    res.status(500).json({ success: false, message: "Erro interno do servidor" });
+    return res.status(500).json({ success: false, message: "Erro interno do servidor" });
   }
 };
 
+
+
+
 const verifyConflictOnUpdate = async (req, res, next) => {
   const { id } = req.params;
-  const { username, email, cpf } = req.body;
+  const { email, cpf } = req.body;
 
   try {
     // Encontra o usuário atual
-    const currentUser = await prisma.user.findUnique({
-      where: { id: parseInt(id) },
-    });
+    const currentUser = await userService.findUserById(parseInt(id));
 
     if (!currentUser) {
       return res.status(404).json({
@@ -60,26 +57,11 @@ const verifyConflictOnUpdate = async (req, res, next) => {
     }
 
     // Verifica se outro usuário já possui os mesmos dados
-    const conflicts = await prisma.user.findMany({
-      where: {
-        AND: [
-          { id: { not: parseInt(id) } }, // Ignora o usuário atual
-          {
-            OR: [
-              { username },
-              { email },
-              { cpf },
-            ],
-          },
-        ],
-      },
-    });
+    const conflicts = await userService.verifyConflictOnUpdate(id, email, cpf);
+    console.log(conflicts)
 
     const errors = {};
 
-    if (conflicts.some(conflict => conflict.username === username)) {
-      errors.username = "Nome de usuário já existe.";
-    }
     if (conflicts.some(conflict => conflict.email === email)) {
       errors.email = "Email já cadastrado.";
     }
@@ -101,4 +83,4 @@ const verifyConflictOnUpdate = async (req, res, next) => {
   }
 };
 
-module.exports = { verifyExistUser, verifyConflictOnUpdate };
+export default { verifyExistUser, verifyConflictOnUpdate };

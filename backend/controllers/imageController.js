@@ -1,6 +1,6 @@
-const path = require('path');
-const imageService = require('../services/imageService');
-const userService = require('../services/userService');
+import path from 'path';
+import imageService from '../services/imageService.js'; 
+import userService from '../services/userService.js';
 
 const createImage = async (req, res) => {
     const id = req.userId;
@@ -62,7 +62,7 @@ const deleteImage = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     createImage,
     deleteImage,
 };

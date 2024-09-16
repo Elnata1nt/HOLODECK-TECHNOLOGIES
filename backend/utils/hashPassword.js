@@ -1,5 +1,4 @@
-const bcrypt = require("bcrypt");
-
+import bcrypt from 'bcrypt';
 // função para criptografar a senha
 
 const hashPassword = async (password) => {
@@ -20,4 +19,4 @@ const checkPassword = async (password, hashedPassword) => {
   return match; 
 };
 
-module.exports = { hashPassword,checkPassword};
+export default { hashPassword, checkPassword};

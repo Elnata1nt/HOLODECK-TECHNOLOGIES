@@ -1,38 +1,76 @@
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
-}
-        
-model User {
-  id             Int      @id @default(autoincrement())
-  name           String
-  username       String   @unique
-  email          String   @unique
-  cpf            String   @unique  // CPF único (para sistemas brasileiros)
-  password       String
-  bio            String?  // Biografia do usuário, opcional
-  profilePicture String?  // URL da imagem de perfil, opcional
-  website        String?  // URL do site pessoal ou portfólio, opcional
-  github         String?  // URL do perfil GitHub, opcional
-  linkedin       String?  // URL do perfil LinkedIn, opcional
-  twitter        String?  // URL do perfil Twitter, opcional
-  createdAt      DateTime @default(now()) // Data de criação do perfil
-  updatedAt      DateTime @updatedAt      // Data de última atualização do perfil
-  articles       Article[] // Relacionamento com artigos escritos pelo usuário
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int          @id @default(autoincrement())
+  name      String       @db.VarChar(255)
+  email     String       @unique @db.VarChar(254)
+  password  String       @db.VarChar(255)
+  cpf       String       @unique @db.VarChar(11)
+  createdAt DateTime     @default(now()) @db.Timestamp(6)
+  updatedAt DateTime     @updatedAt @db.Timestamp(6)
+  profile   UserProfile?
+  roles     UserRole[]
+  articles  Article[]  
+
+  @@index([email])
+  @@index([cpf])
+}
+
+model UserProfile {
+  id             Int     @id @default(autoincrement())
+  bio            String? @db.Text
+  profilePicture String? @db.VarChar(255)
+  website        String? @db.VarChar(255)
+  github         String? @db.VarChar(255)
+  linkedin       String? @db.VarChar(255)
+  twitter        String? @db.VarChar(255)
+  userId         Int     @unique
+  user           User    @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Role {
+  id       Int        @id @default(autoincrement())
+  nameRole String     @unique @db.VarChar(100)
+  users    UserRole[]
+
+  @@index([nameRole])
+}
+
+model UserRole {
+  userId Int
+  roleId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role   Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+  @@unique([userId, roleId])
+}
 
 model Article {
-  id      Int    @id @default(autoincrement())
-  title   String
-  content String
-  theme   String
-  userId  Int
-  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id         Int           @id @default(autoincrement())
+  title      String        @db.VarChar(255)
+  content    String        @db.Text
+  imgArticle String?       @db.VarChar(255)
+  status     ArticleStatus @default(DRAFT)
+  createdAt  DateTime      @default(now()) @db.Timestamp(6)
+  updatedAt  DateTime      @updatedAt @db.Timestamp(6)
+
+  author   User @relation(fields: [authorId], references: [id], onDelete: Cascade) // Define onDelete here
+  authorId Int
+
+  @@index([authorId])
+}
+
+enum ArticleStatus {
+  DRAFT
+  PUBLISHED
 }
