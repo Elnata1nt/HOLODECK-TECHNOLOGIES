@@ -1,21 +1,36 @@
-import React, { useState } from "react";
-import { useAuthContext } from "../../contexts/AuthContext"; // Supondo que você use o contexto de autenticação
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { login } = useAuthContext();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { SignIn, signed } = useContext(AuthContext);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Hook para navegação
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    const data = { email, password };
     try {
-      await login(username, password);
-      // Redirecionar ou mostrar uma mensagem de sucesso
+      const response = await SignIn(data);
+      
+      console.log(response)
+      if (!response.success) { // Verifica se a resposta do servidor é uma mensagem de sucesso
+        setError(response.message); // Mostrar erro retornado pelo servidor
+      } else {
+        setError(null);
+        navigate("/Collaborator"); // Redireciona sem recarregar a página
+      }
     } catch (err) {
-      setError("Falha ao fazer login. Verifique suas credenciais.");
+      console.error("Erro ao fazer login:", err);
+      setError("Erro ao fazer login. Por favor, tente novamente.");
     }
   };
+
+  if (signed) {
+    return <Navigate to="/Collaborator" />;
+  }
 
   return (
     <div
@@ -31,26 +46,27 @@ const Login = () => {
           <p className="text-gray-300">
             Sabemos o quão difícil é ser um desenvolvedor. Não precisa ser. Feed
             de notícias personalizado, comunidade dev e pesquisa, muito melhor
-            do que o que está por aí. Talvez ;)
+            do que o que está por aí. Talvez ;
           </p>
         </div>
         {/* Right Section: Login Form */}
         <div className="flex flex-col w-full md:w-1/2 p-8 text-white space-y-6 bg-gray-800 bg-opacity-80 rounded-lg">
           <h1 className="text-3xl font-bold">Entrar</h1>
           {error && <p className="text-red-500 text-center">{error}</p>}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          
+          <form onSubmit={handleSignIn} className="space-y-4">
             <div>
               <label
-                htmlFor="username"
+                htmlFor="email"
                 className="block text-sm font-medium text-gray-300"
               >
                 E-mail
               </label>
               <input
                 type="email"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                id="email" // Corrigido para 'email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="Digite seu e-mail"
                 className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded focus:outline-none focus:ring focus:ring-lime-500"
