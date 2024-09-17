@@ -11,65 +11,83 @@ const RegisterPage = () => {
     email: "",
     cpf: "",
   });
+  const [invalidFields, setInvalidFields] = useState({
+    email: false,
+    cpf: false,
+  });
+
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
   const formatCPF = (cpf) => {
     return cpf
-      .replace(/\D/g, '') // Remove tudo que não é número
-      .replace(/(\d{3})(\d)/, '$1.$2') // Adiciona o ponto após 3 dígitos
-      .replace(/\.(\d{3})(\d)/, '.$1.$2') // Adiciona o ponto após 3 dígitos
-      .replace(/\.(\d{3})(\d)/, '.$1-$2') // Adiciona o hífen após 3 dígitos
-      .replace(/(-\d{2})\d+?$/, '$1'); // Garante que o CPF tenha 11 dígitos
+      .replace(/\D/g, "") // Remove tudo que não é número
+      .replace(/(\d{3})(\d)/, "$1.$2") // Adiciona o ponto após 3 dígitos
+      .replace(/\.(\d{3})(\d)/, ".$1.$2") // Adiciona o ponto após 3 dígitos
+      .replace(/\.(\d{3})(\d)/, ".$1-$2") // Adiciona o hífen após 3 dígitos
+      .replace(/(-\d{2})\d+?$/, "$1"); // Garante que o CPF tenha 11 dígitos
   };
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setFormData({ ...formData, [id]: id === 'cpf' ? formatCPF(value) : value });
+    setFormData({ ...formData, [id]: id === "cpf" ? formatCPF(value) : value });
     setError(null);
+    setInvalidFields({ email: false, cpf: false });
   };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const { password, confirmPassword, name, email, cpf } = formData;
-  
+
     if (password !== confirmPassword) {
       setError("As senhas não coincidem.");
       return;
     }
-  
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!emailRegex.test(email)) {
       setError("Email inválido");
       return;
     }
-  
+
     setError(null); // Limpar erros anteriores
     setLoading(true); // Ativar indicador de carregamento
-  
+
     try {
-      const data = { name, email, password, passwordVerification: confirmPassword, cpf, username: email };
+      const data = {
+        name,
+        email,
+        password,
+        passwordVerification: confirmPassword,
+        cpf,
+        username: email,
+      };
       const response = await CreateUser(data);
-  
+
       if (!response.success) {
+        setInvalidFields({
+          email: !!response.message.email,
+          cpf: !!response.message.cpf,
+        });
+
         // Formatar mensagens de erro em uma string
         const errorMessages = response.message
-          ? Object.entries(response.message).map(([_, value]) => `${value}`).join(' - ')//eslint-disable-line
-          : "Erro desconhecido";
+          ? Object.entries(response.message)
+          .map(([_, value]) => `${value}`)//eslint-disable-line
+              .join(" - ") 
+              : "Erro desconhecido";
         setError(errorMessages);
       } else {
         // Sucesso, redirecionar para a página de login
         window.location.href = "/login";
       }
-  
     } catch (err) {
       setError("Falha ao registrar. Tente novamente.");
-      console.error("Erro durante o registro:", err);
+      console.error("Erro durante o registro:", err.response.data);
     } finally {
       setLoading(false); // Desativar indicador de carregamento
     }
   };
-  
 
   return (
     <div
@@ -88,10 +106,23 @@ const RegisterPage = () => {
         {/* Right Section: Registration Form */}
         <div className="flex flex-col w-full md:w-1/2 p-8 text-white space-y-6 bg-gray-800 bg-opacity-80 rounded-lg">
           <h1 className="text-3xl font-bold">Registrar</h1>
-          {error && <p className="text-red-500 text-center">{error}</p>}
+          <div className="relative h-6">
+            {error && (
+              <p
+                className={`text-red-500 text-center w-full absolute transition-opacity duration-500 ${
+                  error ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {error}
+              </p>
+            )}
+          </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-300"
+              >
                 Nome:
               </label>
               <input
@@ -101,12 +132,15 @@ const RegisterPage = () => {
                 onChange={handleChange}
                 required
                 placeholder="Digite seu nome completo"
-                className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded focus:outline-none focus:ring focus:ring-lime-500"
+                className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded border-[3px] border-gray-700  focus:outline-none focus:ring focus:ring-lime-500"
               />
             </div>
 
             <div>
-              <label htmlFor="cpf" className="block text-sm font-medium text-gray-300">
+              <label
+                htmlFor="cpf"
+                className="block text-sm font-medium text-gray-300"
+              >
                 CPF:
               </label>
               <input
@@ -117,12 +151,19 @@ const RegisterPage = () => {
                 required
                 placeholder="Digite seu CPF"
                 maxLength={14}
-                className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded focus:outline-none focus:ring focus:ring-lime-500"
+                className={`w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded border-[3px]  focus:outline-none ${
+                  invalidFields.cpf
+                    ? "border-red-500"
+                    : "border-gray-700 focus:ring focus:ring-lime-500"
+                }`}
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-300"
+              >
                 E-mail:
               </label>
               <input
@@ -132,12 +173,19 @@ const RegisterPage = () => {
                 onChange={handleChange}
                 required
                 placeholder="Digite seu e-mail"
-                className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded focus:outline-none focus:ring focus:ring-lime-500"
+                className={`w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded border-[3px] focus:outline-none ${
+                  invalidFields.email
+                    ? "border-red-500"
+                    : "border-gray-700 focus:ring focus:ring-lime-500"
+                }`}
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-300">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-300"
+              >
                 Senha:
               </label>
               <input
@@ -147,12 +195,15 @@ const RegisterPage = () => {
                 onChange={handleChange}
                 required
                 placeholder="Digite sua senha"
-                className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded focus:outline-none focus:ring focus:ring-lime-500"
+                className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded border-[3px] border-gray-700  focus:outline-none focus:ring focus:ring-lime-500"
               />
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-medium text-gray-300"
+              >
                 Confirmar Senha:
               </label>
               <input
@@ -163,7 +214,7 @@ const RegisterPage = () => {
                 required
                 minLength={8}
                 placeholder="Confirme sua senha"
-                className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded focus:outline-none focus:ring focus:ring-lime-500"
+                className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded border-[3px] border-gray-700  focus:outline-none focus:ring focus:ring-lime-500"
               />
             </div>
 
@@ -205,7 +256,6 @@ const RegisterPage = () => {
       </div>
     </div>
   );
-
 };
 
 export default RegisterPage;
