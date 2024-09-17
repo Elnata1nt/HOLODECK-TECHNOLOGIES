@@ -1,31 +1,23 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { SignIn, signed } = useContext(AuthContext);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Hook para navegação
 
+  // Função de exemplo para lidar com a resposta da SignIn
   const handleSignIn = async (e) => {
     e.preventDefault();
     const data = { email, password };
-    try {
-      const response = await SignIn(data);
-      
-      console.log(response)
-      if (!response.success) { // Verifica se a resposta do servidor é uma mensagem de sucesso
-        setError(response.message); // Mostrar erro retornado pelo servidor
-      } else {
-        setError(null);
-        navigate("/Collaborator"); // Redireciona sem recarregar a página
-      }
-    } catch (err) {
-      console.error("Erro ao fazer login:", err);
-      setError("Erro ao fazer login. Por favor, tente novamente.");
-    }
+    
+    const result = await SignIn(data);
+    
+    if (!result.success) {
+      setError(result.message); // Mostrar erro retornado pelo servidor ou erro genérico
+    } 
   };
 
   if (signed) {
@@ -51,8 +43,10 @@ const Login = () => {
         </div>
         {/* Right Section: Login Form */}
         <div className="flex flex-col w-full md:w-1/2 p-8 text-white space-y-6 bg-gray-800 bg-opacity-80 rounded-lg">
-          <h1 className="text-3xl font-bold">Entrar</h1>
-          {error && <p className="text-red-500 text-center">{error}</p>}
+          <h1 className="text-3xl font-bold ">Entrar  </h1>
+          <div className="relative  w-full h-4">
+          {error && <p className="text-red-500 text-center font-extrabold absolute top-0  left-0 right-0 transition-opacity duration-500 opacity-100">{error}</p>}
+          </div>
           
           <form onSubmit={handleSignIn} className="space-y-4">
             <div>
@@ -66,7 +60,7 @@ const Login = () => {
                 type="email"
                 id="email" // Corrigido para 'email'
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {setEmail(e.target.value);setError(null)}}
                 required
                 placeholder="Digite seu e-mail"
                 className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded focus:outline-none focus:ring focus:ring-lime-500"
@@ -83,7 +77,7 @@ const Login = () => {
                 type="password"
                 id="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {setPassword(e.target.value);setError(null)}}
                 required
                 placeholder="Digite sua senha"
                 className="w-full px-4 py-3 mt-1 bg-gray-700 text-white rounded focus:outline-none focus:ring focus:ring-lime-500"
