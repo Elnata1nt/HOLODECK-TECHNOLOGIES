@@ -24,23 +24,33 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const SignIn = async ({ email, password }) => {
-    const response = await api.post("/login/logar", {
-      email,
-      password,
-    });
-
-    if (!response.data.success) {
-      return await response.data;
-    } else {
-      setUser(response.data.user);
-      api.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${response.data.token}`;
-      localStorage.setItem("@Auth:token", response.data.token);
-      localStorage.setItem("@Auth:user", JSON.stringify(response.data.user));
+    try {
+      const response = await api.post("/login/logar", {
+        email,
+        password,
+      });
+  
+      // Se a requisição for bem-sucedida (status 2xx)
+      if (response.data.success) {
+        setUser(response.data.user);
+        api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
+        localStorage.setItem("@Auth:token", response.data.token);
+        localStorage.setItem("@Auth:user", JSON.stringify(response.data.user));
+  
+        return { success: true, user: response.data.user, token: response.data.token };
+      } else {
+        return { success: false, message: response.data.message || 'Erro desconhecido' };
+      }
+    } catch (error) {
+      if (error.response) {
+        const { data } = error.response;
+        return { success: data.success , message: data.message  };
+      }
+      
+        return { success: false, message: 'Erro ao fazer login. Por favor, tente novamente mais tarde.' };
     }
   };
-
+  
   const SignOut = async () => {
     localStorage.removeItem("@Auth:token");
     localStorage.removeItem("@Auth:user");
@@ -54,7 +64,13 @@ export const AuthProvider = ({ children }) => {
       return response.data; // Retorne a resposta diretamente
     } catch (error) {
       console.error("Erro na criação do usuário:", error);
-      return { success: false, message: "Erro ao criar usuário. Tente novamente." }; // Retorne um erro padrão
+      
+      if (error.response) {
+        const { data } = error.response;
+        return { success: data.success , message: data.message  };
+      }
+      
+        return { success: data.success, message: 'Erro ao fazer login. Por favor, tente novamente mais tarde.' };
     }
   };
   
