@@ -4,28 +4,26 @@ import generateToken from "../utils/createToken.js";
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  const user = await userService.findUserByEmail(email);
-
-  if (!user || user === null) {
-    return res.status(401).json({ success: false, message: 'Usuário sem cadastro' });
-  }
-  
   
   try {
-
+    const user = await userService.findUserByEmail(email);
+  
+    if (!user || user === null) {
+      return res.status(401).json({ success: false, message: 'Usuário sem cadastro' });
+    }
+    
     // Verifique a senha
     const isMatch = await utils.checkPassword(password, user.password);
-    console.log(isMatch)
     
     if (!isMatch) {
-      return res.status(401).json({ success: false, message: 'Nome de usuário ou senha inválidos' });
+      return res.status(401).json({ success: false, message: 'senha inválida!' });
     }
     // Gere um token JWT
     const token = await generateToken(user, 1);
 
-    const {roles, ...userResponseToken } = user;
-
-    res.json({
+    
+    const {roles, ...userResponseToken } = user; // Remover roles
+    res.status(200).json({
       success: true,
       user:userResponseToken,
       token,
