@@ -5,4 +5,4 @@ const listProjectCollaborators = async (req, res) => {
  return res.json({ success: true, message: 'Lista de colaboradores ' + req.userId + ' - '+ req.userName });
 };
 
-module.exports = { listProjectCollaborators }
+export default  { listProjectCollaborators }

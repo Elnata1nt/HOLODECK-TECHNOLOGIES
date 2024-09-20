@@ -1,4 +1,5 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
+
 
 const authMiddleware = (req, res, next) => {
   // Obtém o token do cabeçalho Authorization
@@ -8,10 +9,7 @@ const authMiddleware = (req, res, next) => {
    if(!token){ 
     return res.status(401).json({ 
       success: false, 
-      error: { 
-        code: 'TOKEN_NOT_PROVIDED', 
         message: 'Token não fornecido.' 
-      }     
     })
   }
 
@@ -25,13 +23,10 @@ const authMiddleware = (req, res, next) => {
     // Se o token for inválido
     res.status(401).json({
       success: false,
-      error: {
-        code: 'INVALID_TOKEN',
         message: 'Token inválido.'
-      }
+
     });
   }
 }
 
-
-module.exports = authMiddleware;
+export default authMiddleware;

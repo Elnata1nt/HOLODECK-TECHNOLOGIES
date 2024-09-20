@@ -1,6 +1,6 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const User = require('./User'); // Importa o modelo User
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/connection.js';
+import User from './User.js'; 
 
 const Article = sequelize.define('Article', {
   title: {
@@ -21,4 +21,4 @@ const Article = sequelize.define('Article', {
 Article.belongsTo(User, { foreignKey: 'userId' });
 User.hasMany(Article, { foreignKey: 'userId' });
 
-module.exports = Article;
+export default Article;

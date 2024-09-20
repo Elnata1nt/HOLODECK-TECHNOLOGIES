@@ -1,6 +1,7 @@
-const { PrismaClient } = require('@prisma/client');
+import { PrismaClient } from '@prisma/client';
+import fs from 'fs';
+
 const prisma = new PrismaClient();
-const fs = require('fs');
 
 const deleteImageFile = async (filePath) => {
     try {
@@ -18,7 +19,7 @@ const updateUserProfilePicture = async (userId, newProfilePicture) => {
     });
 };
 
-module.exports = {
+export default {
     deleteImageFile,
     updateUserProfilePicture,
 };

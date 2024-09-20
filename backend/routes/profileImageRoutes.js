@@ -1,8 +1,10 @@
-const express = require( 'express');
-const imageController = require( '../controllers/imageController.js');
-const upload = require( '../middlewares/multerConfig.js');
-const authMiddleware = require('../middlewares/authMiddleware.js');
+import express from 'express';
+import imageController from '../controllers/imageController.js';
+import upload from '../middlewares/multerConfig.js';
+import authMiddleware from './../middlewares/authMiddleware.js';
+
 const router = express.Router();
+
 
 // Rota para criar ou atualizar uma imagem
 router.post('/upload', upload.single('image'), authMiddleware, imageController.createImage);
@@ -10,4 +12,4 @@ router.post('/upload', upload.single('image'), authMiddleware, imageController.c
 // deletar a imagem do usuário
 router.delete('/delete', authMiddleware,imageController.deleteImage);
 
-module.exports = router;
+export default router;

@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import {
   AiOutlineMenu,
   AiOutlineClose,
   AiOutlineHome,
-  AiOutlineMail,
   AiOutlineUserAdd,
-  AiOutlineUsergroupAdd,
   AiOutlineProject,
   AiOutlineCalendar,
   AiOutlineShoppingCart,
@@ -13,9 +11,12 @@ import {
 } from "react-icons/ai";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
+// import DarkMode from "./../ui-components/DarkMode";
+import { AuthContext } from "./../../contexts/AuthContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { signed } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,8 +26,8 @@ const Header = () => {
     <header className="bg-white relative">
       <div className="container mx-auto flex text-black justify-between items-center py-4 px-6">
         {/* Logo com Fonte Personalizada */}
-        <div className="text-3xl text-secondary font-bold">
-          Holodeck
+        <div className="text-3xl font-bold">
+          Holodeck<span className="text-white"></span>
         </div>
 
         {/* Botão de Menu para Modo Mobile */}
@@ -39,7 +40,7 @@ const Header = () => {
           <button
             onClick={toggleMenu}
             aria-label="Toggle Menu"
-            className="text-secondary"
+            className="text-black"
           >
             {isMenuOpen ? (
               <AiOutlineClose size={30} />
@@ -71,12 +72,6 @@ const Header = () => {
           >
             Comunidade
           </a>
-          {/* <a
-              href="/collaborator"
-              className="hover:text-secondary font-semibold transition-colors duration-200"
-            >
-              Colaborador
-            </a> */}
           <a
             href="/projects"
             className="hover:text-secondary font-semibold transition-colors duration-200"
@@ -101,10 +96,25 @@ const Header = () => {
           >
             Blog
           </a>
+          {signed ? (
+            <a
+              href="/Collaborator"
+              className="hover:text-secondary font-semibold transition-colors duration-200"
+            >
+              Colaborador
+            </a>
+          ) : (
+            <a
+              href="/login"
+              className="hover:text-secondary font-semibold transition-colors duration-200"
+            >
+              Login
+            </a>
+          )}
         </nav>
 
         {/* Ícones Sociais Desktop */}
-        {/* <div className="hidden lg:flex items-center space-x-4">
+        <div className="hidden lg:flex items-center space-x-4 pr-14">
           <a
             href="https://www.facebook.com/holodeckcommunity"
             target="_blank"
@@ -132,10 +142,9 @@ const Header = () => {
           >
             <FaLinkedin />
           </a>
-        </div> */}
+          {/* <DarkMode />      modo dark */}
+        </div>
       </div>
-
-
 
       {/* Linha Verde-Limão */}
       <div className="bg-primary h-1"></div>
@@ -224,6 +233,24 @@ const Header = () => {
             <AiOutlineBook size={20} />
             <span>Blog</span>
           </a>
+
+          {signed ? (
+            <a
+              href="/Collaborator"
+              className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
+            >
+               <AiOutlineBook size={20} />
+               <span>Colaborador</span>
+            </a>
+          ) : (
+            <a
+              href="/login"
+              className="hover:text-secondary transition border-b border-primary py-2 w-full text-right flex items-center space-x-2"
+            >
+              <AiOutlineBook size={20} />
+              <span>Login</span>
+            </a>
+          )}
         </div>
 
         {/* Ícones Sociais Mobile */}
@@ -232,7 +259,7 @@ const Header = () => {
             href="https://www.facebook.com/holodeckcommunity"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:text-white transition-colors duration-200"
+            className="text-secondary hover:text-white transition-colors duration-200"
             aria-label="Facebook"
           >
             <FaFacebook />
@@ -241,7 +268,7 @@ const Header = () => {
             href="https://www.instagram.com/holodeckcommunity/profilecard/?igsh=bzJ6Zmlua3h3aHQ="
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:text-white transition-colors duration-200"
+            className="text-secondary hover:text-white transition-colors duration-200"
             aria-label="Instagram"
           >
             <FaInstagram />
@@ -250,7 +277,7 @@ const Header = () => {
             href="https://www.linkedin.com/in/holodeck-technologies-community?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:text-white transition-colors duration-200"
+            className="text-secondary hover:text-white transition-colors duration-200"
             aria-label="LinkedIn"
           >
             <FaLinkedin />
@@ -262,4 +289,3 @@ const Header = () => {
 };
 
 export default Header;
-

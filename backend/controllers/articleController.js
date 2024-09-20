@@ -1,7 +1,7 @@
-const { PrismaClient } = require('@prisma/client');
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-exports.listArticles = async (req, res) => {
+  const listArticles = async (req, res) => {
   try {
     const articles = await prisma.article.findMany({
       include: { user: true },
@@ -12,7 +12,7 @@ exports.listArticles = async (req, res) => {
   }
 };
 
-exports.createArticle = async (req, res) => {
+  const createArticle = async (req, res) => {
   try {
     const { title, content, theme, userId } = req.body;
     const article = await prisma.article.create({
@@ -23,3 +23,5 @@ exports.createArticle = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export default { listArticles, createArticle };
